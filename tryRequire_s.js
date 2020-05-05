@@ -10,6 +10,8 @@
 
         // 获取当前正在执行的js代码段，这个在onLoad事件之前执行
         modName = document.currentScript && document.currentScript.id || "REQUIRE_MAIN";
+        console.log("---");
+        console.log("currentScript", document.currentScript);
 
         // 简单实现，这里未做参数检查，只考虑数组的情况
         if (deps.length)
@@ -23,6 +25,7 @@
                     // 这块回调很关键
                     loadMod(deps[i], function (param)
                     {
+                        console.log("param", param);
                         params[i] = param;
                         depCount--;
                         if (depCount == 0)
